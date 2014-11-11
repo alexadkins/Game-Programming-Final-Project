@@ -1,5 +1,9 @@
 import random
 from graphics import *
+
+PLAYER_X = 49
+PLAYER_Y = 49
+
 # The size of the level (in tiles)
 LEVEL_WIDTH = 50
 LEVEL_HEIGHT = 50

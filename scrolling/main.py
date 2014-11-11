@@ -20,10 +20,10 @@ def main ():
     level = create_random_level()
 
     # initial "center" of the screen is (25,25) in the level array
-    scr = create_screen(level,window,49,49)
+    scr = create_screen(level,window,PLAYER_X,PLAYER_Y)
 
     # player starts at (25,25) as well...
-    p = Player(49,49,window,level,scr)
+    p = Player(PLAYER_X,PLAYER_Y,window,level,scr)
 
     q = EventQueue()
 
