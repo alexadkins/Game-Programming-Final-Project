@@ -10,6 +10,7 @@ from player import *
 from queue import *
 from checkinput import *
 
+
 def main ():
 
     window = GraphWin("Scrolling Demo", 
@@ -19,10 +20,10 @@ def main ():
     level = create_random_level()
 
     # initial "center" of the screen is (25,25) in the level array
-    scr = create_screen(level,window,25,25)
+    scr = create_screen(level,window,49,49)
 
     # player starts at (25,25) as well...
-    p = Player(25,25,window,level,scr)
+    p = Player(49,49,window,level,scr)
 
     q = EventQueue()
 

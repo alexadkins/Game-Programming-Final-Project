@@ -1,4 +1,5 @@
 import random
+from graphics import *
 # The size of the level (in tiles)
 LEVEL_WIDTH = 50
 LEVEL_HEIGHT = 50
@@ -12,6 +13,16 @@ TILE_SIZE = 24
 WINDOW_WIDTH = TILE_SIZE * VIEWPORT_WIDTH
 WINDOW_HEIGHT = TILE_SIZE * VIEWPORT_HEIGHT
 
+def screen_pos_index (x,px,y, py):
+    (wx, wy) = level_to_window(x,px,y,py)
+    sx = wx*TILE_SIZE
+    sy = wy*TILE_SIZE
+    return sx,sy
+
+def level_to_window(x,px,y, py):
+    wx = x-px+10
+    wy = y-py+10
+    return wx,wy
 
 def make2dList(rows, cols):
     a=[]
@@ -35,18 +46,26 @@ def create_random_level ():
 
 
 
-def create_screen (level,window,x,y):
-    # WRITE ME: take a level description and a window
-    # and initial tile coordingates (x,y) representing the tile in the 
-    # level array to display smack in the middle of the
-    # window, and fills in the window and presumably
-    # returns something that you can use later on to
-    # modify what's on the screen. (What that is is
-    # up to you.)
-    # 
-    # You can use the create_screen function from
-    # your Lode Runner game as inspiration
-    pass
+def create_screen (level,window,px,py):
+    colors = {1:"green", 2:"brown", 0: "white"}
+    for rows in range(py-10,py+11):
+        if rows > 0 and rows < 50:
+            for col in range(px-10, px+11):
+                (sx,sy) = screen_pos_index(col,px,rows,py)
+                if col > 0 and col < 50:
+                    elt = Rectangle(Point(sx,sy),Point(sx+TILE_SIZE,sy+TILE_SIZE))
+                    elt.setFill(colors[level[rows][col]])
+                    elt.setOutline(colors[level[rows][col]])
+                else:
+                    print sx, col
+                    elt = Rectangle(Point(sx,0), Point(sx+TILE_SIZE, 20*TILE_SIZE))  
+                    elt.setFill("black")
+                elt.draw(window)                      
+        else: 
+            (sx,sy) = screen_pos_index(0,px,rows, py)
+            elt = Rectangle(Point(0,sy), Point(20*TILE_SIZE+TILE_SIZE,sy+TILE_SIZE))
+            elt.setFill("black")
+            elt.draw(window)
 
 
 # A simple class to register a "checking input from the player" event

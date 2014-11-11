@@ -10,6 +10,8 @@ class Player (object):
     def __init__ (self,x,y,window,level,scr):
         self._pic = "t_android.gif"    # this might be useful
         self._window = window  # you may not need all of these, but they're here anyway
+        self._image = Image(Point(10*TILE_SIZE+TILE_SIZE/2,10*TILE_SIZE+TILE_SIZE/2),self._pic)
+        self._image.draw(window)
         self._level = level
         self._screen = scr
         self._x = x
@@ -20,6 +22,7 @@ class Player (object):
         # calculate new position:
         tx = self._x + dx
         ty = self._y + dy
+
         # make sure you call this when there is movement so that the
         # window can refresh
         self._window.update()
