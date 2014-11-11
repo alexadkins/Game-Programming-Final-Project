@@ -62,7 +62,7 @@ def create_screen (level,window,px,py):
                     elt.setOutline(colors[level[rows][col]])
                 else:
                     print sx, col
-                    elt = Rectangle(Point(sx,0), Point(sx+TILE_SIZE, 20*TILE_SIZE))  
+                    elt = Rectangle(Point(sx,0), Point(sx+TILE_SIZE, 20*TILE_SIZE+TILE_SIZE))  
                     elt.setFill("black")
                 elt.draw(window)                      
         else: 
